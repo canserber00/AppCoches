@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Coches</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Lista de Coches</h1>
+        <a href="{% url 'scrapear_coches' %}" class="btn btn-warning mb-4">Scrapear Coches</a>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Año</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for coche in coches %}
+                <tr>
+                    <td>{{ coche.marca }}</td>
+                    <td>{{ coche.modelo }}</td>
+                    <td>{{ coche.año }}</td>
+                    <td>{{ coche.precio }}€</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No hay coches disponibles en este momento.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+
